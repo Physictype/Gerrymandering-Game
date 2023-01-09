@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Grid.gd" type="Script" id=1]
+[ext_resource path="res://Districts.tscn" type="PackedScene" id=2]
+[ext_resource path="res://party_tileset.tres" type="TileSet" id=4]
+
+[node name="Grid" type="Node2D"]
+script = ExtResource( 1 )
+width = 10
+height = 10
+
+[node name="Districts" parent="." instance=ExtResource( 2 )]
+
+[node name="Houses" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1

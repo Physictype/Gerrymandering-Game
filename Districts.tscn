@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Districts.gd" type="Script" id=1]
+[ext_resource path="res://party_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://DistrictCreator States/Idle.gd" type="Script" id=4]
+[ext_resource path="res://DistrictCreator States/Creating.gd" type="Script" id=5]
+[ext_resource path="res://DistrictCreator States/Editing.gd" type="Script" id=6]
+[ext_resource path="res://BorderRenderer.gd" type="Script" id=7]
+[ext_resource path="res://DistrictRendering.tscn" type="PackedScene" id=8]
+
+[node name="Districts" type="TileMap"]
+show_behind_parent = true
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 1 )
+district_size = 10
+district_margin = 1
+min_x = -100
+min_y = -100
+max_x = 100
+max_y = 100
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+initial_state = NodePath("DistrictIdle")
+
+[node name="DistrictIdle" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="DistrictCreating" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="DistrictEditing" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="BorderRenderer" type="Node2D" parent="."]
+script = ExtResource( 7 )
+district_scene = ExtResource( 8 )
