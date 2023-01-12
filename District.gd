@@ -22,4 +22,5 @@ func calc_party():
 	var sum = 0
 	for block in blocks:
 		sum += block.party*block.population
-	return int(sum < blocks.size()/2) # add equal
+	print(sum)
+	return int(sum > blocks.size()/2) # add equal

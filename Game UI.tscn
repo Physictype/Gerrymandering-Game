@@ -1,5 +1,6 @@
 [gd_scene format=2]
 
 [node name="Game UI" type="Control"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0

@@ -15,6 +15,7 @@ func _ready():
 
 func get_district_from_pos(position: Vector2):
 	for district in districts:
-		if district.blocks.has(position):
-			return district
+		for block in district.blocks:
+			if block.x == position.x and block.y == position.y:
+				return district
 	return null

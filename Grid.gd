@@ -18,6 +18,7 @@ func _ready():
 			var block = Block.new(i,j,randi()%2,1)
 			block.connect("redraw",self,"redraw_tile")
 			redraw_tile(block)
+			blocks.append(block)
 
 
 func redraw_tile(block):
