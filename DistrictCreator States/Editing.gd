@@ -2,10 +2,13 @@ extends State
 class_name DistrictEditing
 
 var district
+var input: bool = true
 
 func enter(msg := {}):
 	district = msg["district"]
 func update(_delta: float):
+	if not input:
+		return
 	if Input.is_action_pressed("left_button_clicked"):
 		var owner = state_machine.owner
 		var map_pos: Vector2 = owner.world_to_map(owner.get_global_mouse_position())
@@ -26,3 +29,7 @@ func update(_delta: float):
 				state_machine.transition_to("DistrictIdle")
 	if Input.is_action_just_pressed("escape"):
 		state_machine.transition_to("DistrictIdle")
+
+
+func _on_StateMachine_input_off():
+	input = false

@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://DistrictCreator States/Idle.gd"
 }, {
+"base": "State",
+"class": "GameStatePlanning",
+"language": "GDScript",
+"path": "res://GameState States/Planning.gd"
+}, {
+"base": "State",
+"class": "GameStateRunning",
+"language": "GDScript",
+"path": "res://GameState States/Running.gd"
+}, {
 "base": "Object",
 "class": "LinkedList",
 "language": "GDScript",
@@ -48,6 +58,16 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://StateMachine.gd"
+}, {
+"base": "UI_State",
+"class": "UIIdle",
+"language": "GDScript",
+"path": "res://UI States/Idle.gd"
+}, {
+"base": "State",
+"class": "UI_State",
+"language": "GDScript",
+"path": "res://UI States/UI_State.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -55,9 +75,13 @@ _global_script_class_icons={
 "DistrictCreating": "",
 "DistrictEditing": "",
 "DistrictIdle": "",
+"GameStatePlanning": "",
+"GameStateRunning": "",
 "LinkedList": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"UIIdle": "",
+"UI_State": ""
 }
 
 [application]

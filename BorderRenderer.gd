@@ -24,5 +24,10 @@ func _process(_delta: float):
 		for block in get_parent().districts[i].blocks:
 			district.get_child(0).set_cell(block.x,block.y,0)
 			district.get_child(1).set_cell(block.x,block.y,party)
-		district.get_child(0).modulate = Color(229.0/256.0,175.5/256.0,179.0/256.0) if party else Color(190.0/256.0,229.0/256.0,240.5/256.0)
+		if party == 0:
+			district.get_child(0).modulate = Color(189.5/255.0,228.5/255.0,240.0/255.0)
+		elif party == 1:
+			district.get_child(0).modulate = Color(228.5/255.0,175.0/255.0,178.5/255.0)
+		else:
+			district.get_child(0).modulate = Color(194.5/225.0,0.0,1.0)
 		district.get_child(0).update_bitmask_region(Vector2(get_parent().min_x,get_parent().min_y),Vector2(get_parent().max_x,get_parent().max_y))

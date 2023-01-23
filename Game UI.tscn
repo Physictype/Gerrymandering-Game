@@ -1,6 +1,28 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Game UI" type="Control"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[ext_resource path="res://StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://UI States/Idle.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 1 )
+initial_state = NodePath("UIIdle")
+
+[node name="UIIdle" type="Node" parent="States"]
+script = ExtResource( 2 )
+ui_on = [ NodePath("../../Game UI/PlayButton") ]
+
+[node name="Game UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlayButton" type="Button" parent="Game UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.1
+margin_left = 32.0
+margin_top = 50.0
+margin_right = 44.0
+margin_bottom = 70.0
+text = "Play"

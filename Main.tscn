@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Game UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameState.gd" type="Script" id=4]
+[ext_resource path="res://GameState States/Planning.gd" type="Script" id=5]
+[ext_resource path="res://GameState States/Running.gd" type="Script" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,4 +17,26 @@ zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 speed = 100
 
-[node name="Game UI" parent="." instance=ExtResource( 3 )]
+[node name="Game UI" parent="Camera2D" instance=ExtResource( 3 )]
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource( 4 )
+initial_state = NodePath("GameStatePlanning")
+
+[node name="GameStatePlanning" type="Node" parent="GameState"]
+script = ExtResource( 5 )
+
+[node name="GameStateRunning" type="Node" parent="GameState"]
+script = ExtResource( 6 )
+
+[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictIdle" method="_on_StateMachine_input_off"]
+[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictCreating" method="_on_StateMachine_input_off"]
+[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictEditing" method="_on_StateMachine_input_off"]
+[connection signal="input_off" from="GameState" to="Grid" method="_on_GameState_input_off"]
+[connection signal="input_off" from="GameState" to="Grid/Districts/StateMachine" method="_on_GameState_input_off"]
+[connection signal="input_off" from="GameState" to="Grid/SwitchTimer" method="_on_GameState_input_off"]
+[connection signal="entered" from="GameState/GameStateRunning" to="GameState" method="_on_GameStateRunning_entered"]
+
+[editable path="Grid"]
+[editable path="Grid/Districts"]
+[editable path="Camera2D/Game UI"]

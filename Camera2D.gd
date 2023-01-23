@@ -18,3 +18,4 @@ func _process(delta):
 		position.x -= speed * delta
 	if Input.is_action_pressed("ui_right"):
 		position.x += speed * delta
+	

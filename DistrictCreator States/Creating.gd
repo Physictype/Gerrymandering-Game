@@ -1,7 +1,11 @@
 extends State
 class_name DistrictCreating
 
+var input: bool = true
+
 func enter(msg := {}):
+	if not input:
+		return
 	var owner = state_machine.owner
 	var block = state_machine.owner.get_parent().block_from_pos(msg["pos"])
 	if block == null:
@@ -9,3 +13,7 @@ func enter(msg := {}):
 	var district = District.new([block],owner.district_size,owner.district_margin)
 	owner.districts.append(district)
 	state_machine.transition_to("DistrictEditing",{"district":district})
+
+
+func _on_StateMachine_input_off():
+	input = false

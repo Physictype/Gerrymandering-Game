@@ -3,6 +3,7 @@ extends Node2D
 
 export var width : int
 export var height : int
+export var change_odds : float
 var blocks : Array
 
 func block_from_pos(pos):
@@ -24,3 +25,14 @@ func _ready():
 func redraw_tile(block):
 	# add calculator
 	$Houses.set_cell(block.x,block.y,block.party)
+
+
+func _on_SwitchTimer_timeout():
+	for i in range(len(blocks)):
+		if randf() < change_odds:
+			blocks[i].party = 1-blocks[i].party
+			redraw_tile(blocks[i])
+
+
+func _on_GameState_input_off():
+	pass # Replace with function body.
