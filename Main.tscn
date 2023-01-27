@@ -29,13 +29,12 @@ script = ExtResource( 5 )
 [node name="GameStateRunning" type="Node" parent="GameState"]
 script = ExtResource( 6 )
 
-[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictIdle" method="_on_StateMachine_input_off"]
-[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictCreating" method="_on_StateMachine_input_off"]
-[connection signal="input_off" from="Grid/Districts/StateMachine" to="Grid/Districts/StateMachine/DistrictEditing" method="_on_StateMachine_input_off"]
+[connection signal="not_over_district" from="Grid/Districts/StateMachine/DistrictIdle" to="Camera2D/Game UI/Node2D" method="_on_DistrictIdle_not_over_district"]
+[connection signal="over_district" from="Grid/Districts/StateMachine/DistrictIdle" to="Camera2D/Game UI/Node2D" method="_on_DistrictIdle_over_district"]
+[connection signal="pressed" from="Camera2D/Game UI/Game UI/PlayButton" to="GameState/GameStatePlanning" method="_on_PlayButton_pressed"]
 [connection signal="input_off" from="GameState" to="Grid" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/Districts/StateMachine" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/SwitchTimer" method="_on_GameState_input_off"]
-[connection signal="entered" from="GameState/GameStateRunning" to="GameState" method="_on_GameStateRunning_entered"]
 
 [editable path="Grid"]
 [editable path="Grid/Districts"]

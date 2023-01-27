@@ -10,7 +10,7 @@ export var max_y: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 func get_district_from_pos(position: Vector2):

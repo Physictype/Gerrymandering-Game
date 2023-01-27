@@ -9,7 +9,6 @@
 script = ExtResource( 1 )
 width = 10
 height = 10
-change_odds = 0.01
 
 [node name="Districts" parent="." instance=ExtResource( 2 )]
 
