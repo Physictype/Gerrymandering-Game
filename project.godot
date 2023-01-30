@@ -55,9 +55,19 @@ _global_script_classes=[ {
 "path": "res://StateMachine.gd"
 }, {
 "base": "UI_State",
+"class": "UIDrawing",
+"language": "GDScript",
+"path": "res://UI States/Drawing.gd"
+}, {
+"base": "UI_State",
 "class": "UIIdle",
 "language": "GDScript",
 "path": "res://UI States/Idle.gd"
+}, {
+"base": "UI_State",
+"class": "UIOverDistrict",
+"language": "GDScript",
+"path": "res://UI States/OverDistrict.gd"
 }, {
 "base": "State",
 "class": "UI_State",
@@ -74,7 +84,9 @@ _global_script_class_icons={
 "GameStateRunning": "",
 "State": "",
 "StateMachine": "",
+"UIDrawing": "",
 "UIIdle": "",
+"UIOverDistrict": "",
 "UI_State": ""
 }
 

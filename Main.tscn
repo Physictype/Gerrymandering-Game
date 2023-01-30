@@ -17,7 +17,7 @@ zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 speed = 100
 
-[node name="Game UI" parent="Camera2D" instance=ExtResource( 3 )]
+[node name="CanvasLayer" parent="Camera2D" instance=ExtResource( 3 )]
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -29,13 +29,9 @@ script = ExtResource( 5 )
 [node name="GameStateRunning" type="Node" parent="GameState"]
 script = ExtResource( 6 )
 
-[connection signal="not_over_district" from="Grid/Districts/StateMachine/DistrictIdle" to="Camera2D/Game UI/Node2D" method="_on_DistrictIdle_not_over_district"]
-[connection signal="over_district" from="Grid/Districts/StateMachine/DistrictIdle" to="Camera2D/Game UI/Node2D" method="_on_DistrictIdle_over_district"]
-[connection signal="pressed" from="Camera2D/Game UI/Game UI/PlayButton" to="GameState/GameStatePlanning" method="_on_PlayButton_pressed"]
 [connection signal="input_off" from="GameState" to="Grid" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/Districts/StateMachine" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/SwitchTimer" method="_on_GameState_input_off"]
 
 [editable path="Grid"]
 [editable path="Grid/Districts"]
-[editable path="Camera2D/Game UI"]
