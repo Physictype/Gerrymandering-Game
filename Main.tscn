@@ -32,6 +32,3 @@ script = ExtResource( 6 )
 [connection signal="input_off" from="GameState" to="Grid" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/Districts/StateMachine" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/SwitchTimer" method="_on_GameState_input_off"]
-
-[editable path="Grid"]
-[editable path="Grid/Districts"]
