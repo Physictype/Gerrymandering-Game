@@ -15,7 +15,7 @@ func block_from_pos(pos):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_island()
+	positions = generate_island()
 	$PartyNoise.texture.width = width
 	$PartyNoise.texture.height = height
 	for i in range(len(positions)):
@@ -25,22 +25,35 @@ func _ready():
 		blocks.append(block)
 
 func generate_island():
-	var start = Vector2(256,256)
-	positions = propagate(start)
-func propagate(vec):
-	if $IslandNoise.texture.noise.get_noise_2d(vec.x,vec.y)<0.75:
-		return []
-	var res = []
-	res.append_array(propagate(vec+Vector2(1,0)))
-	res.append_array(propagate(vec+Vector2(-1,0)))
-	res.append_array(propagate(vec+Vector2(0,1)))
-	res.append_array(propagate(vec+Vector2(0,-1)))
-	return unique(res)
+	var res = [Vector2(0,0)]
+	for i in range(10):
+		if randi()%2:
+			for j in range(len(res)):
+				var point = res[j]
+				res.append(point+Vector2(0,1))
+				res.append(point+Vector2(0,-1))
+				res.append(point+Vector2(1,0))
+				res.append(point+Vector2(-1,0))
+		else:
+			for j in range(len(res)):
+				var point = res[j]
+				var rand = randi()%4
+				if rand == 0:
+					res.append(point+Vector2(0,1))
+				elif rand == 1:
+					res.append(point+Vector2(0,-1))
+				elif rand == 2:
+					res.append(point+Vector2(1,0))
+				else:
+					res.append(point+Vector2(-1,0))
+		res = unique(res)
+	return res
 func unique(arr):
 	var res = []
 	for ell in arr:
 		if not res.has(ell):
 			res.append(ell)
+	return res
 
 func redraw_tile(block):
 	# add calculator

@@ -18,6 +18,20 @@ func get_size():
 func check_valid():
 	return abs(get_size()-size) <= margin
 
+func num_red():
+	var sum = 0
+	for block in blocks:
+		if block.party == 1:
+			sum += block.population
+	return sum
+
+func num_blue():
+	var sum = 0
+	for block in blocks:
+		if block.party == 0:
+			sum += block.population
+	return sum
+
 func calc_party():
 	var sum = 0
 	for block in blocks:

@@ -19,7 +19,7 @@ initial_state = NodePath("UIIdle")
 
 [node name="UIIdle" type="Node" parent="States"]
 script = ExtResource( 2 )
-ui_on = [ NodePath("../../Node2D/Control") ]
+ui_on = [ NodePath("../../Game UI/Node2D") ]
 
 [node name="UIDrawing" type="Node" parent="States"]
 script = ExtResource( 4 )
@@ -38,36 +38,36 @@ margin_right = 44.0
 margin_bottom = 70.0
 text = "Play"
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="Game UI"]
 script = ExtResource( 3 )
 
-[node name="Control" type="Control" parent="Node2D"]
+[node name="Control" type="Control" parent="Game UI/Node2D"]
 margin_left = -171.0
 margin_bottom = 94.0
 
-[node name="ColorRect" type="ColorRect" parent="Node2D/Control"]
+[node name="ColorRect" type="ColorRect" parent="Game UI/Node2D/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.521569, 0.521569, 0.521569, 0.666667 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game UI/Node2D/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Title" type="Label" parent="Node2D/Control/VBoxContainer"]
+[node name="Title" type="Label" parent="Game UI/Node2D/Control/VBoxContainer"]
 margin_right = 171.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "test hehe"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game UI/Node2D/Control/VBoxContainer"]
 margin_top = 18.0
 margin_right = 171.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="Node2D/Control/VBoxContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Game UI/Node2D/Control/VBoxContainer/HBoxContainer"]
 margin_right = 143.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
@@ -75,7 +75,7 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 
-[node name="stest" type="Label" parent="Node2D/Control/VBoxContainer/HBoxContainer"]
+[node name="stest" type="Label" parent="Game UI/Node2D/Control/VBoxContainer/HBoxContainer"]
 margin_left = 147.0
 margin_right = 171.0
 margin_bottom = 14.0
