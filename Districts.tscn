@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Districts.gd" type="Script" id=1]
-[ext_resource path="res://party_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://p_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://DistrictStateMachine.gd" type="Script" id=3]
 [ext_resource path="res://DistrictCreator States/Idle.gd" type="Script" id=4]
 [ext_resource path="res://DistrictCreator States/Creating.gd" type="Script" id=5]

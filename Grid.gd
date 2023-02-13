@@ -16,8 +16,6 @@ func block_from_pos(pos):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	positions = generate_island()
-	$PartyNoise.texture.width = width
-	$PartyNoise.texture.height = height
 	for i in range(len(positions)):
 		var block = Block.new(positions[i].x,positions[i].y,$PartyNoise.texture.noise.get_noise_2d((i%512)+1,(i/512)+1)>0,1)
 		block.connect("redraw",self,"redraw_tile")
@@ -57,7 +55,7 @@ func unique(arr):
 
 func redraw_tile(block):
 	# add calculator
-	$Houses.set_cell(block.x,block.y,block.party)
+	$Houses.set_cell(block.x,block.y,block.party*2)
 
 
 func _on_SwitchTimer_timeout():

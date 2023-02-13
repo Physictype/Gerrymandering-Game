@@ -8,7 +8,6 @@ func handle_input(_event: InputEvent):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func update(delta):
 	if Input.is_action_just_pressed("left_button_clicked"):
-		print("E!")
 		state_machine.transition_to("UIDrawing")
 
 

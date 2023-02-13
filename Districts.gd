@@ -19,3 +19,6 @@ func get_district_from_pos(position: Vector2):
 			if block.x == position.x and block.y == position.y:
 				return district
 	return null
+
+func get_red():
+	pass

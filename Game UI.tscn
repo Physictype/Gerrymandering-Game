@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://UI States/Idle.gd" type="Script" id=2]
 [ext_resource path="res://DistrictTooltip.gd" type="Script" id=3]
 [ext_resource path="res://UI States/Drawing.gd" type="Script" id=4]
+[ext_resource path="res://Roboto.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0, 0, 1 )
@@ -27,16 +28,6 @@ script = ExtResource( 4 )
 [node name="Game UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="PlayButton" type="Button" parent="Game UI"]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.1
-margin_left = 32.0
-margin_top = 50.0
-margin_right = 44.0
-margin_bottom = 70.0
-text = "Play"
 
 [node name="Node2D" type="Node2D" parent="Game UI"]
 script = ExtResource( 3 )
@@ -81,3 +72,61 @@ margin_right = 171.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "arst"
+
+[node name="MarginContainer" type="Control" parent="Game UI"]
+anchor_right = 1.0
+anchor_bottom = 0.125
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Game UI/MarginContainer"]
+anchor_left = 0.9
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.1
+
+[node name="PlayButton" type="Button" parent="Game UI/MarginContainer/MarginContainer"]
+margin_right = 82.0
+margin_bottom = 20.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 60, 0 )
+text = "Play"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Game UI/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game UI/MarginContainer/MarginContainer2"]
+margin_right = 121.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+
+[node name="Red" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 1, 0.360784, 0.360784, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "red"
+
+[node name="slash" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 48.0
+margin_right = 59.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 5 )
+text = "/"
+
+[node name="Blue" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 63.0
+margin_right = 121.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0, 0.8125, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "blue"

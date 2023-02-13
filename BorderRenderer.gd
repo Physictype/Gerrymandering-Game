@@ -23,8 +23,9 @@ func _process(_delta: float):
 		var party: int = get_parent().districts[i].calc_party()
 		for block in get_parent().districts[i].blocks:
 			district.get_child(0).set_cell(block.x,block.y,0)
-			district.get_child(1).set_cell(block.x,block.y,party)
-		if party == 0:
+			print(party+2)
+			district.get_child(1).set_cell(block.x,block.y,party+1)
+		if party == -1:
 			district.get_child(0).modulate = Color(189.5/255.0,228.5/255.0,240.0/255.0)
 		elif party == 1:
 			district.get_child(0).modulate = Color(228.5/255.0,175.0/255.0,178.5/255.0)
