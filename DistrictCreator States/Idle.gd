@@ -19,7 +19,13 @@ func update(delta: float) -> void:
 			state_machine.transition_to("DistrictCreating",{"pos":map_pos})
 		else:
 			state_machine.transition_to("DistrictEditing",{"district":district})
-
+	check_number_keys()
+func check_number_keys():
+	var numbers = ["one","two","three","four","five","six","seven","eight","nine","ten"]
+	for i in range(10):
+		if Input.is_action_just_pressed(numbers[i]) and owner.districts.size()>i:
+			var district = owner.districts[i]
+			state_machine.transition_to("DistrictEditing",{"district":district})
 func exit():
 	emit_signal("not_over_district")
 

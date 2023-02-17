@@ -20,5 +20,16 @@ func get_district_from_pos(position: Vector2):
 				return district
 	return null
 
-func get_red():
-	pass
+func get_party_comp():
+	var r = 0
+	var b = 0
+	var e = 0
+	for district in districts:
+		var party = district.calc_party()
+		if party==-1:
+			b += 1
+		elif party==1:
+			r += 1
+		elif party==0:
+			e += 1
+	return [b,e,r]

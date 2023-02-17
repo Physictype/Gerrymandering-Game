@@ -12,6 +12,7 @@ func enter(msg := {}):
 		state_machine.transition_to("DistrictIdle")
 	var district = District.new([block],owner.district_size,owner.district_margin)
 	owner.districts.append(district)
+	owner.get_child(1).update_districts()
 	state_machine.transition_to("DistrictEditing",{"district":district})
 
 

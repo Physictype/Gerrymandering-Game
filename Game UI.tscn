@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://UI States/Idle.gd" type="Script" id=2]
 [ext_resource path="res://DistrictTooltip.gd" type="Script" id=3]
 [ext_resource path="res://UI States/Drawing.gd" type="Script" id=4]
 [ext_resource path="res://Roboto.tres" type="DynamicFont" id=5]
+[ext_resource path="res://DistrictCounter.gd" type="Script" id=6]
+[ext_resource path="res://Game UI.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0, 0, 1 )
@@ -13,6 +15,7 @@ bg_color = Color( 1, 0, 0, 1 )
 bg_color = Color( 0.0705882, 0, 1, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="States" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -102,31 +105,68 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game UI/MarginContainer/MarginContainer2"]
-margin_right = 121.0
+margin_right = 301.0
 margin_bottom = 36.0
 size_flags_horizontal = 0
+script = ExtResource( 6 )
+
+[node name="Blue" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_right = 58.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0, 0.8125, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "blue"
+
+[node name="slash" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 62.0
+margin_right = 73.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 5 )
+text = "/"
+
+[node name="Equal" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 77.0
+margin_right = 151.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.741176, 0.168627, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "equal"
+
+[node name="slash2" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 155.0
+margin_right = 166.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 5 )
+text = "/"
 
 [node name="Red" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_right = 44.0
+margin_left = 170.0
+margin_right = 214.0
 margin_bottom = 36.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 1, 0.360784, 0.360784, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "red"
 
-[node name="slash" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 48.0
-margin_right = 59.0
+[node name="equal" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 218.0
+margin_right = 236.0
 margin_bottom = 36.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 5 )
-text = "/"
+text = "="
 
-[node name="Blue" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 63.0
-margin_right = 121.0
+[node name="Total" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
+margin_left = 240.0
+margin_right = 301.0
 margin_bottom = 36.0
 size_flags_horizontal = 0
-custom_colors/font_color = Color( 0, 0.8125, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "blue"
+text = "total"
+
+[connection signal="pressed" from="Game UI/MarginContainer/MarginContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

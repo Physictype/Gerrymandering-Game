@@ -28,6 +28,7 @@ script = ExtResource( 5 )
 [node name="GameStateRunning" type="Node" parent="GameState"]
 script = ExtResource( 6 )
 
+[connection signal="play" from="Camera2D/CanvasLayer" to="GameState/GameStatePlanning" method="_on_CanvasLayer_play"]
 [connection signal="input_off" from="GameState" to="Grid" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/Districts/StateMachine" method="_on_GameState_input_off"]
 [connection signal="input_off" from="GameState" to="Grid/SwitchTimer" method="_on_GameState_input_off"]

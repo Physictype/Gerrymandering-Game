@@ -15,6 +15,8 @@ func block_from_pos(pos):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	get_child(3).texture.noise.seed = randi()
 	positions = generate_island()
 	for i in range(len(positions)):
 		var block = Block.new(positions[i].x,positions[i].y,$PartyNoise.texture.noise.get_noise_2d((i%512)+1,(i/512)+1)>0,1)
