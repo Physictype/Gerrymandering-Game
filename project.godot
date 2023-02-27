@@ -9,12 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
+"base": "Reference",
 "class": "Block",
 "language": "GDScript",
 "path": "res://Block.gd"
 }, {
-"base": "Object",
+"base": "Reference",
 "class": "District",
 "language": "GDScript",
 "path": "res://District.gd"

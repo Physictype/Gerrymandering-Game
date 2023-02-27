@@ -1,5 +1,7 @@
 extends TileMap
 
+signal edited(party_comp)
+
 var districts: Array = []
 export var district_size: int
 export var district_margin: int
@@ -33,3 +35,11 @@ func get_party_comp():
 		elif party==0:
 			e += 1
 	return [b,e,r]
+
+
+func _on_DistrictCreating_entered():
+	emit_signal("edited",get_party_comp())
+
+
+func _on_DistrictEditing_edited():
+	emit_signal("edited",get_party_comp())

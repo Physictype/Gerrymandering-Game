@@ -38,3 +38,6 @@ script = ExtResource( 6 )
 [node name="BorderRenderer" type="Node2D" parent="."]
 script = ExtResource( 7 )
 district_scene = ExtResource( 8 )
+
+[connection signal="entered" from="StateMachine/DistrictCreating" to="." method="_on_DistrictCreating_entered"]
+[connection signal="edited" from="StateMachine/DistrictEditing" to="." method="_on_DistrictEditing_edited"]

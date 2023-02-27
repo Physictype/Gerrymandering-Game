@@ -1,6 +1,7 @@
 extends State
 class_name DistrictCreating
 
+
 var input: bool = true
 
 func enter(msg := {}):
@@ -14,6 +15,7 @@ func enter(msg := {}):
 	owner.districts.append(district)
 	owner.get_child(1).update_districts()
 	state_machine.transition_to("DistrictEditing",{"district":district})
+	emit_signal("entered")
 
 
 func _on_StateMachine_input_off():

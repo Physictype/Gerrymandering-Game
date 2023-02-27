@@ -1,6 +1,8 @@
 extends State
 class_name DistrictEditing
 
+signal edited
+
 signal over_district
 signal not_over_district
 
@@ -32,12 +34,14 @@ func update(_delta: float):
 			var block = owner.get_parent().block_from_pos(map_pos)
 			if (not district.blocks.has(block)) and block != null:
 				district.blocks.append(block)
+				emit_signal("edited")
 		elif test_district != district:
 				state_machine.transition_to("DistrictEditing",{"district":test_district})
 	if Input.is_action_pressed("right_button_clicked"):
 		var owner = state_machine.owner
 		if test_district == district:
 			district.blocks.remove(district.blocks.find(owner.get_parent().block_from_pos(map_pos)))
+			emit_signal("edited")
 			if district.blocks.size() == 0:
 				owner.districts.remove(owner.districts.find(district))
 				owner.get_child(1).update_districts()

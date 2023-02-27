@@ -1,20 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://UI States/Idle.gd" type="Script" id=2]
-[ext_resource path="res://DistrictTooltip.gd" type="Script" id=3]
+[ext_resource path="res://Top Bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI States/Drawing.gd" type="Script" id=4]
-[ext_resource path="res://Roboto.tres" type="DynamicFont" id=5]
-[ext_resource path="res://DistrictCounter.gd" type="Script" id=6]
+[ext_resource path="res://District Tooltip.tscn" type="PackedScene" id=5]
+[ext_resource path="res://DistrictInfo.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game UI.gd" type="Script" id=7]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0705882, 0, 1, 1 )
-
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 script = ExtResource( 7 )
 
 [node name="States" type="Node" parent="."]
@@ -23,7 +17,7 @@ initial_state = NodePath("UIIdle")
 
 [node name="UIIdle" type="Node" parent="States"]
 script = ExtResource( 2 )
-ui_on = [ NodePath("../../Game UI/Node2D") ]
+ui_on = [ NodePath("../../Game UI/District Tooltip") ]
 
 [node name="UIDrawing" type="Node" parent="States"]
 script = ExtResource( 4 )
@@ -32,141 +26,220 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Node2D" type="Node2D" parent="Game UI"]
-script = ExtResource( 3 )
+[node name="District Tooltip" parent="Game UI" instance=ExtResource( 5 )]
 
-[node name="Control" type="Control" parent="Game UI/Node2D"]
-margin_left = -171.0
-margin_bottom = 94.0
+[node name="Top Bar" parent="Game UI" instance=ExtResource( 3 )]
 
-[node name="ColorRect" type="ColorRect" parent="Game UI/Node2D/Control"]
+[node name="Side Bar" type="Control" parent="Game UI"]
+margin_top = 110.0
+margin_right = 319.0
+margin_bottom = 596.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Game UI/Side Bar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.521569, 0.521569, 0.521569, 0.666667 )
+scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game UI/Node2D/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Title" type="Label" parent="Game UI/Node2D/Control/VBoxContainer"]
-margin_right = 171.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "test hehe"
-align = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game UI/Node2D/Control/VBoxContainer"]
-margin_top = 18.0
-margin_right = 171.0
-margin_bottom = 32.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Game UI/Side Bar/ScrollContainer"]
+margin_right = 307.0
+margin_bottom = 812.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="Game UI/Node2D/Control/VBoxContainer/HBoxContainer"]
-margin_right = 143.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-value = 50.0
+[node name="DistrictInfo" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_bottom = 77.0
 
-[node name="stest" type="Label" parent="Game UI/Node2D/Control/VBoxContainer/HBoxContainer"]
-margin_left = 147.0
-margin_right = 171.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "arst"
+[node name="DistrictInfo2" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_top = 81.0
+margin_bottom = 158.0
 
-[node name="MarginContainer" type="Control" parent="Game UI"]
-anchor_right = 1.0
-anchor_bottom = 0.125
-grow_horizontal = 2
+[node name="DistrictInfo3" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_top = 162.0
+margin_bottom = 239.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Game UI/MarginContainer"]
-anchor_left = 0.9
-anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-size_flags_horizontal = 0
-size_flags_stretch_ratio = 0.1
+[node name="DistrictInfo4" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_top = 243.0
+margin_bottom = 320.0
 
-[node name="PlayButton" type="Button" parent="Game UI/MarginContainer/MarginContainer"]
-margin_right = 82.0
+[node name="DistrictInfo5" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_top = 324.0
+margin_bottom = 401.0
+
+[node name="DistrictInfo6" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_top = 405.0
+margin_bottom = 482.0
+
+[node name="Button" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_right = 307.0
 margin_bottom = 20.0
-grow_horizontal = 0
-rect_pivot_offset = Vector2( 60, 0 )
-text = "Play"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Game UI/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Button2" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 307.0
+margin_bottom = 44.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game UI/MarginContainer/MarginContainer2"]
-margin_right = 301.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-script = ExtResource( 6 )
+[node name="Button3" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 307.0
+margin_bottom = 68.0
 
-[node name="Blue" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_right = 58.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0, 0.8125, 1, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "blue"
+[node name="Button4" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 307.0
+margin_bottom = 92.0
 
-[node name="slash" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 62.0
-margin_right = 73.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 5 )
-text = "/"
+[node name="Button5" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 307.0
+margin_bottom = 116.0
 
-[node name="Equal" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 77.0
-margin_right = 151.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.741176, 0.168627, 1, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "equal"
+[node name="Button6" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 307.0
+margin_bottom = 140.0
 
-[node name="slash2" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 155.0
-margin_right = 166.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 5 )
-text = "/"
+[node name="Button7" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 307.0
+margin_bottom = 164.0
 
-[node name="Red" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 170.0
-margin_right = 214.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 1, 0.360784, 0.360784, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "red"
+[node name="Button8" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 307.0
+margin_bottom = 188.0
 
-[node name="equal" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 218.0
-margin_right = 236.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 5 )
-text = "="
+[node name="Button9" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 307.0
+margin_bottom = 212.0
 
-[node name="Total" type="Label" parent="Game UI/MarginContainer/MarginContainer2/HBoxContainer"]
-margin_left = 240.0
-margin_right = 301.0
-margin_bottom = 36.0
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "total"
+[node name="Button10" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 307.0
+margin_bottom = 236.0
 
-[connection signal="pressed" from="Game UI/MarginContainer/MarginContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[node name="Button11" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 307.0
+margin_bottom = 260.0
+
+[node name="Button12" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 264.0
+margin_right = 307.0
+margin_bottom = 284.0
+
+[node name="Button13" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 307.0
+margin_bottom = 308.0
+
+[node name="Button14" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 312.0
+margin_right = 307.0
+margin_bottom = 332.0
+
+[node name="Button15" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 336.0
+margin_right = 307.0
+margin_bottom = 356.0
+
+[node name="Button16" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 307.0
+margin_bottom = 380.0
+
+[node name="Button17" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 384.0
+margin_right = 307.0
+margin_bottom = 404.0
+
+[node name="Button18" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 408.0
+margin_right = 307.0
+margin_bottom = 428.0
+
+[node name="Button19" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 307.0
+margin_bottom = 452.0
+
+[node name="Button20" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 456.0
+margin_right = 307.0
+margin_bottom = 476.0
+
+[node name="Button21" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 480.0
+margin_right = 307.0
+margin_bottom = 500.0
+
+[node name="Button22" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 504.0
+margin_right = 307.0
+margin_bottom = 524.0
+
+[node name="Button23" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 528.0
+margin_right = 307.0
+margin_bottom = 548.0
+
+[node name="Button24" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 552.0
+margin_right = 307.0
+margin_bottom = 572.0
+
+[node name="Button25" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 576.0
+margin_right = 307.0
+margin_bottom = 596.0
+
+[node name="Button26" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 600.0
+margin_right = 307.0
+margin_bottom = 620.0
+
+[node name="Button27" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 624.0
+margin_right = 307.0
+margin_bottom = 644.0
+
+[node name="Button28" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 648.0
+margin_right = 307.0
+margin_bottom = 668.0
+
+[node name="Button29" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 672.0
+margin_right = 307.0
+margin_bottom = 692.0
+
+[node name="Button30" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 696.0
+margin_right = 307.0
+margin_bottom = 716.0
+
+[node name="Button31" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 720.0
+margin_right = 307.0
+margin_bottom = 740.0
+
+[node name="Button32" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 744.0
+margin_right = 307.0
+margin_bottom = 764.0
+
+[node name="Button33" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 768.0
+margin_right = 307.0
+margin_bottom = 788.0
+
+[node name="Button34" type="Button" parent="Game UI/Side Bar/ScrollContainer/VBoxContainer"]
+margin_top = 792.0
+margin_right = 307.0
+margin_bottom = 812.0
