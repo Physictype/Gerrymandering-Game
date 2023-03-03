@@ -36,10 +36,5 @@ func get_party_comp():
 			e += 1
 	return [b,e,r]
 
-
-func _on_DistrictCreating_entered():
-	emit_signal("edited",get_party_comp())
-
-
-func _on_DistrictEditing_edited():
-	emit_signal("edited",get_party_comp())
+func update_districts():
+	get_child(1).update_districts()

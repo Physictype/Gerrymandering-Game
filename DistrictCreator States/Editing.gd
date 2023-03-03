@@ -44,10 +44,10 @@ func update(_delta: float):
 			emit_signal("edited")
 			if district.blocks.size() == 0:
 				owner.districts.remove(owner.districts.find(district))
-				owner.get_child(1).update_districts()
+				owner.update_districts()
 				deleted = true
 				state_machine.transition_to("DistrictIdle")
-			owner.get_child(1).update_districts()
+			owner.update_districts()
 	if Input.is_action_just_pressed("escape"):
 		state_machine.transition_to("DistrictIdle")
 	check_number_keys()

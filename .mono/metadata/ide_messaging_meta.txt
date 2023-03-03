@@ -1,2 +1,2 @@
-﻿60427
-/Applications/Godot_mono.app/Contents/MacOS/Godot
+﻿62120
+/Users/attlin/Desktop/.stuff/Godot_mono.app/Contents/MacOS/Godot
